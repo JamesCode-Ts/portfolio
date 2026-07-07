@@ -1,0 +1,11 @@
+[[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    Content-Type = "application/pdf"
+    Content-Disposition = "inline"
+
+[[headers]]
+  for = "/assets/documents/*.pdf"
+  [headers.values]
+    Content-Type = "application/pdf"
+    Content-Disposition = "inline"
