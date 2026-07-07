@@ -870,29 +870,115 @@ footer {
   .skill-group:nth-child(n+3) { border-top: 1px solid var(--rule-2); }
   .education-inner { grid-template-columns: 1fr; gap: 48px; }
 }
+
 @media (max-width: 860px) {
-  #opening { grid-template-columns: 1fr; padding-bottom: 56px; }
-  .opening-left { padding: 0 20px; }
+  /* Hero: stack columns, hide decorative composition */
+  #opening {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 96px 32px 56px;
+    align-items: flex-start;
+  }
+  .opening-left {
+    padding: 0;
+    justify-content: flex-start;
+  }
   .opening-right { display: none; }
+
+  /* Hero typography: bigger minimum so it reads on tablet */
+  .opening-statement { font-size: clamp(32px, 5.5vw, 52px); }
+
+  /* Bio: hide facts sidebar, photo+text side by side */
+  .bio-inner { grid-template-columns: auto 1fr; gap: 32px; }
+  .bio-facts { display: none; }
+  .bio-photo { width: 120px; height: 120px; }
+
+  /* Product */
   .product-split { grid-template-columns: 1fr; }
   .arch-panel { position: static; }
+
+  /* Experience */
   .exp-item { grid-template-columns: 80px 1fr; gap: 20px; }
 }
+
 @media (max-width: 600px) {
+  /* Nav */
   nav .nav-links { display: none; }
-  #opening { padding: 0 20px 56px; }
-  #bio, #approach, #skills, #product, #other, #experience, #education, #contact { padding-left: 20px; padding-right: 20px; }
-  .bio-inner { grid-template-columns: 1fr; }
-  .bio-photo-wrap { flex-direction: row; align-items: center; gap: 20px; }
-  .bio-photo { width: 80px; height: 80px; }
-  .bio-photo-placeholder-initial { font-size: 24px; }
+
+  /* Hero: full mobile treatment */
+  #opening {
+    padding: 88px 20px 48px;
+    min-height: auto;
+  }
+  .opening-statement {
+    font-size: clamp(28px, 8vw, 40px);
+    margin-bottom: 16px;
+  }
+  .opening-question {
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+  .opening-meta {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .opening-scroll { display: none; }
+
+  /* Bio: photo centered above text */
+  #bio { padding: 56px 20px; }
+  .bio-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .bio-photo-wrap {
+    flex-direction: column;
+    align-items: center;
+  }
+  .bio-photo {
+    width: 120px;
+    height: 120px;
+  }
+  .bio-name { font-size: clamp(24px, 7vw, 32px); }
+  .bio-links { flex-direction: column; gap: 12px; }
+
+  /* Sections padding */
+  #approach, #other, #experience, #education { padding-left: 20px; padding-right: 20px; }
+  #skills { padding-left: 20px; padding-right: 20px; }
+  #contact { padding-left: 20px; padding-right: 20px; padding-bottom: 80px; }
+  #product { padding-left: 20px; padding-right: 20px; }
+
+  /* Approach principles */
+  .principle { grid-template-columns: 32px 1fr; gap: 12px; }
+  .approach-header { margin-bottom: 36px; }
+
+  /* Skills: single column */
   .skills-grid { grid-template-columns: 1fr; }
-  .skill-group { border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  .skill-group {
+    border-right: none !important;
+    border-top: 1px solid var(--rule-2) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .skill-group:first-child { border-top: none !important; }
+
+  /* Product */
+  .product-name { font-size: clamp(36px, 10vw, 56px); }
+  .product-tagline { font-size: 14px; }
   .modules-grid { grid-template-columns: 1fr; }
-  .principle { grid-template-columns: 36px 1fr; gap: 16px; }
-  .product-inner { padding-left: 0; padding-right: 0; }
-  .contact-cv-row { flex-direction: column; }
+
+  /* Experience */
+  .exp-item { grid-template-columns: 1fr; gap: 6px; }
+  .exp-period { padding-top: 0; }
+
+  /* Contact */
+  .contact-statement { font-size: clamp(22px, 6vw, 32px); }
+  .contact-row { flex-direction: column; gap: 20px; }
+  .contact-cv-row { flex-direction: column; gap: 16px; }
+
+  /* Footer */
+  footer { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .reveal, .principle, .arch-row { transition: none !important; opacity: 1 !important; transform: none !important; }
   .opening-scroll::after, .product-status::before { animation: none; }
@@ -928,11 +1014,10 @@ footer {
     <div class="opening-meta">
       <span class="opening-name">Tiago Santana Ferreira</span>
       <span class="opening-role">Software Engineer · Java · Spring Boot · Angular</span>
-      <a href="./assets/documents/Tiago_Santana_Ferreira_CV.pdf"
-         target="_blank"
-         rel="noopener noreferrer"
+      <a href="/assets/documents/Tiago_Santana_Ferreira_CV.pdf"
+         download="Tiago_Santana_Ferreira_CV.pdf"
          class="bio-link"
-         aria-label="Abrir currículo em PDF">Currículo PDF →</a>
+         aria-label="Baixar currículo em PDF">Currículo PDF ↓</a>
       <span class="opening-scroll" aria-hidden="true">scroll</span>
     </div>
   </div>
@@ -1016,7 +1101,7 @@ footer {
         <img src="/assets/foto.jpg" alt="Tiago Santana Ferreira">
       </div>
     </div>
-    
+
     <!-- Text -->
     <div class="bio-text reveal">
       <p class="bio-eyebrow">quem sou</p>
@@ -1463,16 +1548,15 @@ footer {
     </div>
     <div class="contact-cv-row">
       <p class="contact-cv-note">Nova Iguaçu, Rio de Janeiro · Disponível para trabalho remoto</p>
-      <a href="./assets/documents/Tiago_Santana_Ferreira_CV.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv" aria-label="Ver currículo em PDF">Currículo PDF ↓</a>
+      <a href="/assets/documents/Tiago_Santana_Ferreira_CV.pdf" download="Tiago_Santana_Ferreira_CV.pdf" class="btn-cv" aria-label="Baixar currículo em PDF">Currículo PDF ↓</a>
     </div>
   </div>
 </section>
 
 <footer>
   <span class="footer-copy">© 2026 Tiago Santana Ferreira</span>
-  <a href="./assets/documents/Tiago_Santana_Ferreira_CV.pdf"
-     target="_blank"
-     rel="noopener noreferrer"
+  <a href="/assets/documents/Tiago_Santana_Ferreira_CV.pdf"
+     download="Tiago_Santana_Ferreira_CV.pdf"
      class="footer-stack"
      style="opacity:.45;transition:opacity .2s"
      onmouseover="this.style.opacity='1'"
