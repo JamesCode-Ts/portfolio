@@ -2,5 +2,5 @@
   for = "/assets/documents/*.pdf"
   [headers.values]
     Content-Type = "application/pdf"
-    Content-Disposition = "inline; filename=\"Tiago_Santana_Ferreira_CV.pdf\""
+    Content-Disposition = "attachment; filename=\"Tiago_Santana_Ferreira_CV.pdf\""
     X-Content-Type-Options = "nosniff"
