@@ -1,11 +1,6 @@
 [[headers]]
-  for = "/*.pdf"
-  [headers.values]
-    Content-Type = "application/pdf"
-    Content-Disposition = "inline"
-
-[[headers]]
   for = "/assets/documents/*.pdf"
   [headers.values]
     Content-Type = "application/pdf"
-    Content-Disposition = "inline"
+    Content-Disposition = "inline; filename=\"Tiago_Santana_Ferreira_CV.pdf\""
+    X-Content-Type-Options = "nosniff"
